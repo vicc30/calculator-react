@@ -1,3 +1,4 @@
+import { Parser } from 'expr-eval';
 import React from 'react';
 import Button from './components/Button';
 import "./styles/style.css";
@@ -37,7 +38,7 @@ class App extends React.Component  {
   calculate = (symbol) => {
     let {current, previous, nextIsReset} = this.state;
     if(previous.length > 0){
-      current = eval(String(previous[previous.length - 1] + current));
+      current = Parser.evaluate(String(previous[previous.length - 1] + current));
       this.setState({current, previous: [], nextIsReset: true});
     }
   }
