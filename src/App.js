@@ -18,7 +18,13 @@ class App extends React.Component  {
   }
 
   addToCurrent = (symbol) => {
-    this.setState({current: this.state.current + symbol});
+    if(["/", "X", "+", "-"].indexOf(symbol) > - 1){
+      let {previous} = this.state;
+      previous.push(this.state.current + symbol);
+      this.setState({previous});
+    } else{
+      this.setState({current: this.state.current + symbol});
+    }
   }
 
   render(){
@@ -45,6 +51,10 @@ class App extends React.Component  {
 
     return (
       <div className="App">
+        {this.state.previous.length > 0 ? 
+          <div className="floaty-last">{this.state.previous[this.state.previous.length -1]}</div>
+          : <div className="floaty-last"></div>
+          }
         <input className="result" type="text" value={this.state.current}></input>
 
         {buttons.map((btn, i) => {
