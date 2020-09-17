@@ -35,9 +35,18 @@ input.result {
 }
 
 .floaty-last {
-    position: absolute;
+    margin: auto;
+    display: absolute;
+    text-align: right;
     right: 50px;
     z-index: 99;
     top: 10px;
     color: #aaa;
+}
+
+.App {
+    max-width: min-content;
+    margin: auto;
+    overflow: auto;
+    border: 2px solid #ddd;
 }
