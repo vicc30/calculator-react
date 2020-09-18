@@ -5,8 +5,8 @@ import "./styles/style.css";
 
 class App extends React.Component  {
 
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
 
     this.state = {
       current: '0',
@@ -35,8 +35,8 @@ class App extends React.Component  {
     }
   }
 
-  calculate = (symbol) => {
-    let {current, previous, nextIsReset} = this.state;
+  calculate = () => {
+    let {current, previous} = this.state;
     if(previous.length > 0){
       current = Parser.evaluate(String(previous[previous.length - 1] + current));
       this.setState({current, previous: [], nextIsReset: true});
@@ -69,12 +69,12 @@ class App extends React.Component  {
         {this.state.previous.length > 0 ?
           <div className="floaty-last">{this.state.previous[this.state.previous.length - 1]}</div>
         : null}
-        <input className="result" type="text" value={this.state.current} />
-      
-        {buttons.map((btn, i) => {
-          return <Button key={i} symbol={btn.symbol} cols={btn.cols} action={(symbol) => btn.action(symbol)} />
-        })}
-      
+        <div className="result">{this.state.current}</div>
+        <div>
+          {buttons.map((btn, i) => {
+            return <Button key={i} symbol={btn.symbol} cols={btn.cols} action={(symbol) => btn.action(symbol)} />
+          })}
+        </div>     
       </div>
     );
   }

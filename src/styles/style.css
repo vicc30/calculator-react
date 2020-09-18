@@ -22,15 +22,16 @@ button.calc-button {
     color: #555
 }
 
-input.result {
+.result {
     height: 100px;
-    width: auto;
+    width: 100%;
     border: none;
     text-align: right;
     font-size: 32px;
     position: relative;
     max-width: 100vw;
     margin-right: 50px;
+    margin-top: 20px;
     float: right;
 }
 
@@ -45,8 +46,9 @@ input.result {
 }
 
 .App {
-    max-width: min-content;
+    width: max-content;
     margin: auto;
     overflow: auto;
     border: 2px solid #ddd;
+    border-radius: 10px;
 }
